@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Anita❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta de Amarillos Vibrantes y Naturales */
+            --amarillo-girasol: #FDD835;
+            --amarillo-girasol-luz: #FFF59D;
+            --amarillo-gerbera: #FFEB3B;
+            --amarillo-lirio: #FFF9C4;
+            --girasol-centro-oscuro: #3E2723;
+            --girasol-centro-medio: #5D4037;
+            --verde-tallo: #4CAF50;
+            --rosa-lazo: #FF80AB;
+            --rosa-lazo-oscuro: #F06292;
+            --texto-oro: #C5A028;
+            --fondo-crema: #FFFCF5;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* Fondo premium con textura sutil */
+            background: radial-gradient(circle at center, #ffffff 0%, #fffcf0 100%);
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- ENCABEZADO --- */
+        .header {
+            text-align: center;
+            padding: 70px 20px 40px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 6rem;
+            color: var(--texto-oro);
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(1); }
+        }
+        
+        h1::after {
+            content: '❤️';
+            font-size: 4rem;
+            animation: heartBeat 2s infinite ease-in-out;
+        }
+
+        .dedicatoria {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 680px;
+            margin: 20px auto;
+            color: #666;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes sway {
+            0% { transform: translateX(-50%) rotate(calc(var(--angle) - 1.8deg)); }
+            50% { transform: translateX(-50%) rotate(calc(var(--angle) + 1.8deg)); }
+            100% { transform: translateX(-50%) rotate(calc(var(--angle) - 1.8deg)); }
+        }
+
+        @keyframes cardFloat {
+            0% { opacity: 0; transform: translateY(30px) scale(0.9) rotate(-3deg); }
+            15% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+            85% { opacity: 1; transform: translateY(-8px); }
+            100% { opacity: 0; transform: translateY(-40px) scale(0.95) rotate(3deg); }
+        }
+
+        /* --- FRASES TIPO CARD MEJORADAS (MÁS GRANDES) --- */
+        .phrase-container {
+            position: absolute;
+            bottom: -50px; /* Debajo del lazo */
+            width: 100%;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            z-index: 150;
+        }
+
+        .love-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--rosa-lazo);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: cardFloat 6s ease-in-out forwards;
+            backdrop-filter: blur(5px);
+        }
+
+        .love-card span {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem; /* MÁS GRANDE */
+            color: #444;
+            white-space: nowrap;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.02);
+        }
+
+        .love-card .heart-icon {
+            color: var(--rosa-lazo-oscuro);
+            font-size: 1.6rem;
+            animation: heartBeat 1.5s infinite;
+        }
+
+        /* --- RAMO ARTÍSTICO MEJORADO --- */
+        .bouquet-container {
+            position: relative;
+            width: 100%;
+            height: 580px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 120px;
+        }
+
+        .flower-wrapper {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform-origin: bottom center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateX(-50%) rotate(var(--angle));
+            animation: sway 4.5s ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        .stem {
+            width: 8px;
+            height: var(--h);
+            background: linear-gradient(135deg, var(--verde-tallo) 0%, #81C784 100%);
+            border-radius: 12px;
+            box-shadow: inset -2px 0 3px rgba(0,0,0,0.12);
+        }
+
+        .flower-head {
+            position: absolute;
+            top: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.15));
+        }
+
+        /* Pétalos y Centros Premium con volumen */
+        .girasol .petal {
+            width: 40px; height: 110px;
+            background: linear-gradient(to top, var(--amarillo-girasol) 0%, var(--amarillo-girasol-luz) 100%);
+            border-radius: 50% 50% 20% 20%;
+            border: 0.5px solid rgba(0,0,0,0.04);
+        }
+        .girasol .center {
+            width: 68px; height: 68px;
+            background: radial-gradient(circle, var(--girasol-centro-medio) 0%, var(--girasol-centro-oscuro) 70%, #21110a 100%);
+            border: 4px solid var(--girasol-centro-oscuro);
+            z-index: 10;
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .gerbera .petal {
+            width: 24px; height: 85px;
+            background: linear-gradient(to top, var(--amarillo-gerbera) 0%, #FFF9C4 100%);
+            border-radius: 40% 40% 10% 10%;
+        }
+        .gerbera .center {
+            width: 38px; height: 38px;
+            background: radial-gradient(circle, var(--girasol-centro-medio) 0%, #2e1d13 100%);
+            z-index: 10;
+            border-radius: 50%;
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
+        }
+
+        .lirio .petal {
+            width: 52px; height: 125px;
+            background: linear-gradient(135deg, var(--amarillo-lirio) 0%, #FFFDE7 100%);
+            border-radius: 100% 0% 100% 0%;
+            transform-origin: bottom center;
+        }
+
+        /* Lazo Rosa Estilo Satén Premium */
+        .bow {
+            position: absolute;
+            bottom: 50px;
+            width: 100px; height: 50px;
+            background: linear-gradient(135deg, var(--rosa-lazo) 0%, var(--rosa-lazo-oscuro) 100%);
+            border-radius: 25px;
+            z-index: 100;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.18);
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.12));
+        }
+        .bow::before, .bow::after {
+            content: ''; position: absolute;
+            width: 80px; height: 80px;
+            background: inherit;
+            border-radius: 50% 50% 0 50%;
+            top: -30px;
+        }
+        .bow::before { left: -40px; transform: rotate(-40deg); }
+        .bow::after { right: -40px; transform: rotate(130deg); }
+
+        /* --- EFECTO DE FOTOS ORIGINAL MANTENIDO --- */
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: var(--texto-oro);
+            margin-top: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.03);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 35px;
+            max-width: 1100px;
+            width: 90%;
+            padding: 40px 0;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 15px 15px 45px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-radius: 2px;
+            /* Efecto original mantenido */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.03);
+            cursor: pointer;
+        }
+        
+        /* Efecto de hover original mantenido */
+        .photo-card:hover {
+            transform: scale(1.08) rotate(0deg) !important;
+            z-index: 10;
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 1px;
+            background: #f9f9f9;
+        }
+        
+        .photo-card p {
+            font-family: 'Dancing Script';
+            font-size: 1.5rem;
+            margin: 20px 0 0;
+            text-align: center;
+            color: #555;
+        }
+
+        /* --- BOTÓN Y CARTA MEJORADOS --- */
+        .btn-magic {
+            background: linear-gradient(135deg, var(--rosa-lazo) 0%, var(--rosa-lazo-oscuro) 100%);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            margin: 60px 0;
+            font-family: 'Montserrat';
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255,128,171,0.5);
+        }
+        .btn-magic:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 12px 25px rgba(255,128,171,0.6);
+        }
+
+        #love-letter {
+            display: none;
+            max-width: 800px;
+            width: 90%;
+            background: white;
+            padding: 70px;
+            margin-bottom: 150px;
+            border-left: 10px solid var(--rosa-lazo);
+            border-radius: 5px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.06);
+            animation: fadeInLetter 1.2s ease;
+        }
+
+        @keyframes fadeInLetter {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .letter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            color: var(--texto-oro);
+            margin-top: 0;
+            margin-bottom: 35px;
+        }
+
+        .letter-text {
+            line-height: 1.9;
+            color: #444;
+            font-size: 1.25rem;
+            text-align: justify;
+            font-weight: 300;
+        }
+        .letter-text strong { font-weight: 600; color: #333; }
+
+        .signature {
+            text-align: right;
+            font-family: 'Dancing Script';
+            font-size: 2.5rem;
+            color: var(--rosa-lazo-oscuro);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Para la mujer de mis sueños❤️</h1>
+
+    </header>
+
+    <div class="bouquet-container">
+        <div class="flower-wrapper" style="--angle: -50deg; --h: 300px; --delay: 0s;"><div class="flower-head lirio" id="l1"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: -30deg; --h: 240px; --delay: 0.5s;"><div class="flower-head gerbera" id="ge1"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: -15deg; --h: 340px; --delay: 1.2s;"><div class="flower-head girasol" id="gi1"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: 0deg; --h: 270px; --delay: 0.8s;"><div class="flower-head girasol" id="gi2"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: 15deg; --h: 340px; --delay: 0.3s;"><div class="flower-head girasol" id="gi3"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: 30deg; --h: 240px; --delay: 1.5s;"><div class="flower-head gerbera" id="ge2"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: 50deg; --h: 300px; --delay: 0.7s;"><div class="flower-head lirio" id="l2"></div><div class="stem"></div></div>
+        
+        <div class="bow"></div>
+
+        <div class="phrase-container" id="phrase-box"></div>
+    </div>
+
+    <h2 class="section-title">Nuestro Álbum</h2>
+    
+    <div class="gallery">
+        <div class="photo-card" style="transform: rotate(-3deg)"><img src="WhatsApp Image 2026-03-21 at 19.59.15.jpeg" alt="1"><p>Nuestro inicio</p></div>
+        <div class="photo-card" style="transform: rotate(2deg)"><img src="image copy.png" alt="2"><p>Tu sonrisa</p></div>
+        <div class="photo-card" style="transform: rotate(-1deg)"><img src="image copy 2.png" alt="3"><p>3/3❤️</p></div>
+        <div class="photo-card" style="transform: rotate(4deg)"><img src="image copy 3.png" alt="4"><p>Nuestras Aventuras❤️</p></div>
+        <div class="photo-card" style="transform: rotate(-2deg)"><img src="image.png" alt="5"><p>Noches juntos</p></div>
+        <div class="photo-card" style="transform: rotate(3deg)"><img src="image copy 5.png" alt="6"><p>Mi lugar favorito</p></div>
+        <div class="photo-card" style="transform: rotate(-4deg)"><img src="image copy 4.png" alt="7"><p>Nuestra Ofi</p></div>
+        <div class="photo-card" style="transform: rotate(1deg)"><img src="image copy 6.png" alt="8"><p>Por siempre</p></div>
+    </div>
+
+    <button class="btn-magic" onclick="revealLetter()">Te escribi una pequeña carta💖</button>
+
+    <div id="love-letter">
+        <h3 class="letter-title">Para mi niña hermosa, Anita</h3>
+        <div class="letter-text">
+            <p>Esta vez no te pude dar rosas amarillas pero como el años pasado, te hago estas digitales con todo mi amor
+               y con todo mi corazon, no quiero que en esta relación se pierdan los buenos momentos, al contrario quiero que
+               se dupliquen y estar siempre junto a ti, en esta vida y en todas las posibles por siempre y para siempre, compartir caada momento,
+               cada logro y también cada derrota por que estare contigo en las buenas, en las mala y en las peores por que somos y siempre seremos muy unidos
+               y esto que siento por ti es muy pero muy unico por que yo sinceramente yo jamas espere reecontrarme contigo en esta vida y menos ser lo que hoy en dia somos
+               una gran pareja, tampoco tenia planes de enamorarme pero bueno como resistirme ante esos ojos, esas manos, tu carita toda bella, esa forma de querer, esa forma en la que me tratabas y tratas
+               todo como siempre lo soñe, tu sacaste y sacas la mejor versión de mi y se que siempre sera asi por que simplemente contigo todo es mejor y mas bonito cuando estamos juntos y ahora más que tenemos
+               a nuestra hermosa perrita que llego para fortalecer mas nuestro amor y claro también para fortalecer nuestra paciencia JAJAJA en fin solo queria hacerte este pequeño detalle para que recuerdes y tengas presente que te amo
+               y quiero estar contigo por siempre y para siempre, Te amo mucho❤️.
+            </p>
+          
+        </div>
+        <div class="signature">Con todo mi amor... ❤️</div>
+    </div>
+
+    <script>
+        const phrases = [
+            "Te amo Anita ❤️",
+            "Eres mi adoración, mi amanecer todo☀️",
+            "Algo en esta hice bien para merecer a alguien como tu👩‍❤️",
+            "Nada fracturara nuestro amor✨",
+            "Eres el amor de mis amores😊",
+            "Mi lugar favorito 🏠",
+            "Gracias por existir ❤️",
+            "Mi vida es mejor contigo 🌻"
+        ];
+
+        function createFloatingCard() {
+            const container = document.getElementById('phrase-box');
+            if(container.children.length > 3) return; // Limitar cards simultáneas
+
+            const card = document.createElement('div');
+            card.className = 'love-card';
+            
+            card.innerHTML = `
+                <span class="heart-icon">❤</span>
+                <span>${phrases[Math.floor(Math.random() * phrases.length)]}</span>
+            `;
+            
+            // Variación lateral aleatoria
+            const offset = (Math.random() - 0.5) * 80;
+            card.style.transform = `translateX(${offset}px)`;
+            
+            container.appendChild(card);
+            
+            setTimeout(() => card.remove(), 6000);
+        }
+
+        // Crear una card cada 4 segundos
+        setInterval(createFloatingCard, 4000);
+
+        function buildFlower(id, count, step) {
+            const head = document.getElementById(id);
+            if(!head) return;
+            for(let i=0; i<count; i++) {
+                const p = document.createElement('div');
+                p.className = 'petal';
+                p.style.position = 'absolute';
+                p.style.transform = `rotate(${i*step}deg) translateY(-50%)`;
+                head.appendChild(p);
+            }
+            if(!head.classList.contains('lirio')) {
+                const c = document.createElement('div');
+                c.className = 'center';
+                c.style.borderRadius = '50%';
+                head.appendChild(c);
+            }
+        }
+
+        buildFlower('gi1', 14, 25.7); buildFlower('gi2', 14, 25.7); buildFlower('gi3', 14, 25.7);
+        buildFlower('ge1', 18, 20); buildFlower('ge2', 18, 20);
+        buildFlower('l1', 6, 60); buildFlower('l2', 6, 60);
+
+        function revealLetter() {
+            const letter = document.getElementById('love-letter');
+            letter.style.display = 'block';
+            letter.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
