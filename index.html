@@ -7,17 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --amarillo-girasol: #FDD835;
+            /* Paleta de Amarillos Vibrantes y Naturales */
+            --amarillo-girasol: #FFD54F;
             --amarillo-girasol-luz: #FFF59D;
-            --amarillo-gerbera: #FFEB3B;
+            --amarillo-gerbera: #FFEE58;
             --amarillo-lirio: #FFF9C4;
-            --girasol-centro-oscuro: #5D4037; /* Aclarado ligeramente para móvil */
-            --girasol-centro-medio: #8D6E63;
-            --verde-tallo: #4CAF50;
+            --girasol-centro-oscuro: #5D4037;
+            --girasol-centro-medio: #795548;
+            --verde-tallo: #66BB6A;
             --rosa-lazo: #FF80AB;
             --rosa-lazo-oscuro: #F06292;
-            --texto-oro: #C5A028;
-            --fondo-crema: #FFFCF5;
+            --texto-oro: #B8860B;
         }
 
         body {
@@ -25,7 +25,7 @@
             padding: 0;
             background: radial-gradient(circle at center, #ffffff 0%, #fffcf0 100%);
             font-family: 'Montserrat', sans-serif;
-            color: #333;
+            color: #444;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,28 +33,28 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- ENCABEZADO --- */
+        /* --- ENCABEZADO ADAPTABLE --- */
         .header {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 50px 15px 25px;
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(2.5rem, 10vw, 6rem); /* Responsivo */
+            font-size: clamp(3.5rem, 12vw, 6rem);
             color: var(--texto-oro);
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
         
         @keyframes heartBeat {
-            0% { transform: scale(1); }
-            15% { transform: scale(1.2); }
-            30% { transform: scale(1); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
         
         h1::after {
@@ -63,70 +63,86 @@
             animation: heartBeat 2s infinite ease-in-out;
         }
 
+        .dedicatoria {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 15px auto;
+            color: #777;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
         /* --- ANIMACIONES --- */
         @keyframes sway {
-            0% { transform: translateX(-50%) rotate(calc(var(--angle) - 1.8deg)); }
-            50% { transform: translateX(-50%) rotate(calc(var(--angle) + 1.8deg)); }
-            100% { transform: translateX(-50%) rotate(calc(var(--angle) - 1.8deg)); }
+            0%, 100% { transform: translateX(-50%) rotate(calc(var(--angle) - 1.5deg)); }
+            50% { transform: translateX(-50%) rotate(calc(var(--angle) + 1.5deg)); }
         }
 
         @keyframes cardFloat {
             0% { opacity: 0; transform: translateY(30px) scale(0.9) rotate(-3deg); }
             15% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
-            85% { opacity: 1; transform: translateY(-8px); }
+            85% { opacity: 1; transform: translateY(-10px); }
             100% { opacity: 0; transform: translateY(-40px) scale(0.95) rotate(3deg); }
         }
 
-        /* --- FRASES TIPO CARD --- */
+        /* --- FRASES TIPO CARD REDISEÑADAS (Premium) --- */
         .phrase-container {
             position: absolute;
-            bottom: -30px;
-            width: 100%;
-            height: 100px;
+            bottom: -60px; /* Debajo del lazo */
+            width: 100vw;
+            height: 120px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            pointer-events: none;
             z-index: 150;
+            pointer-events: none;
         }
 
         .love-card {
             position: absolute;
-            background: rgba(255, 255, 255, 0.98);
-            padding: 12px 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             border-bottom: 4px solid var(--rosa-lazo);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             animation: cardFloat 6s ease-in-out forwards;
             backdrop-filter: blur(5px);
-            width: max-content;
-            max-width: 85vw;
         }
 
         .love-card span {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.2rem, 5vw, 2rem);
-            color: #444;
-            white-space: normal;
-            text-align: center;
+            font-size: 1.6rem;
+            color: #555;
+            white-space: nowrap;
         }
 
-        /* --- RAMO ARTÍSTICO (OPTIMIZADO MÓVIL) --- */
+        .love-card .heart-icon {
+            color: var(--rosa-lazo-oscuro);
+            font-size: 1.3rem;
+            animation: heartBeat 1.5s infinite;
+        }
+
+        /* --- RAMO RESPONSIVE (Rediseño de Flores) --- */
         .bouquet-container {
             position: relative;
             width: 100%;
-            height: clamp(350px, 70vh, 580px);
+            height: 480px;
             display: flex;
             justify-content: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
+            transform: scale(0.9);
+        }
+
+        @media (min-width: 600px) {
+            .bouquet-container { height: 600px; transform: scale(1); }
         }
 
         .flower-wrapper {
             position: absolute;
-            bottom: 60px;
+            bottom: 70px;
             left: 50%;
             transform-origin: bottom center;
             display: flex;
@@ -138,10 +154,11 @@
         }
 
         .stem {
-            width: 6px;
+            width: 7px;
             height: var(--h);
-            background: linear-gradient(135deg, var(--verde-tallo) 0%, #81C784 100%);
+            background: linear-gradient(to right, #4CAF50, #81C784);
             border-radius: 12px;
+            box-shadow: inset -1px 0 2px rgba(0,0,0,0.1);
         }
 
         .flower-head {
@@ -151,107 +168,109 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Sombra suavizada para evitar oscuridad en móvil */
-            filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.1));
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
         }
 
-        /* Pétalos con Brillo Ajustado */
+        /* Nuevo Diseño Artístico de Pétalos */
         .girasol .petal {
-            width: clamp(20px, 5vw, 40px); 
-            height: clamp(60px, 15vw, 110px);
-            background: linear-gradient(to top, var(--amarillo-girasol) 30%, var(--amarillo-girasol-luz) 100%);
+            width: 38px; height: 100px;
+            background: linear-gradient(to top, var(--amarillo-girasol) 0%, var(--amarillo-girasol-luz) 100%);
             border-radius: 50% 50% 20% 20%;
+            border: 0.5px solid rgba(0,0,0,0.03);
         }
         .girasol .center {
-            width: clamp(35px, 10vw, 68px); 
-            height: clamp(35px, 10vw, 68px);
-            background: radial-gradient(circle, var(--girasol-centro-medio) 0%, var(--girasol-centro-oscuro) 100%);
-            border: 3px solid var(--girasol-centro-oscuro);
+            width: 65px; height: 65px;
+            background: radial-gradient(circle, var(--girasol-centro-medio) 0%, var(--girasol-centro-oscuro) 70%, #21110a 100%);
+            border: 4px solid var(--girasol-centro-oscuro);
             z-index: 10;
             border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
 
         .gerbera .petal {
-            width: clamp(12px, 3vw, 24px); 
-            height: clamp(45px, 10vw, 85px);
-            background: linear-gradient(to top, var(--amarillo-gerbera) 20%, #FFFDE7 100%);
+            width: 22px; height: 80px;
+            background: linear-gradient(to top, var(--amarillo-gerbera) 0%, #FFF9C4 100%);
             border-radius: 40% 40% 10% 10%;
         }
         .gerbera .center {
-            width: clamp(20px, 5vw, 38px); 
-            height: clamp(20px, 5vw, 38px);
-            background: radial-gradient(circle, var(--girasol-centro-medio) 0%, #3E2723 100%);
+            width: 35px; height: 35px;
+            background: radial-gradient(circle, var(--girasol-centro-medio) 0%, #2e1d13 100%);
             z-index: 10;
             border-radius: 50%;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
         }
 
         .lirio .petal {
-            width: clamp(25px, 6vw, 52px); 
-            height: clamp(70px, 15vw, 125px);
-            background: linear-gradient(135deg, var(--amarillo-lirio) 0%, #ffffff 100%);
+            width: 50px; height: 120px;
+            background: linear-gradient(135deg, var(--amarillo-lirio) 0%, #FFFDE7 100%);
             border-radius: 100% 0% 100% 0%;
             transform-origin: bottom center;
         }
 
         .bow {
             position: absolute;
-            bottom: 40px;
-            width: 80px; height: 40px;
+            bottom: 50px;
+            width: 90px; height: 45px;
             background: linear-gradient(135deg, var(--rosa-lazo) 0%, var(--rosa-lazo-oscuro) 100%);
             border-radius: 20px;
             z-index: 100;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
         }
         .bow::before, .bow::after {
             content: ''; position: absolute;
-            width: 55px; height: 55px;
+            width: 70px; height: 70px;
             background: inherit;
             border-radius: 50% 50% 0 50%;
-            top: -22px;
+            top: -25px;
         }
-        .bow::before { left: -25px; transform: rotate(-40deg); }
-        .bow::after { right: -25px; transform: rotate(130deg); }
+        .bow::before { left: -35px; transform: rotate(-40deg); }
+        .bow::after { right: -35px; transform: rotate(130deg); }
 
-        /* --- GALERÍA --- */
+        /* --- ÁLBUM POLAROID --- */
         .section-title {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-size: 3.2rem;
             color: var(--texto-oro);
-            margin-top: 30px;
-            text-align: center;
+            margin-top: 50px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.03);
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
             gap: 20px;
+            padding: 30px 15px;
+            width: 100%;
             max-width: 1100px;
-            width: 90%;
-            padding: 20px 0;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .gallery { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 35px; }
         }
 
         .photo-card {
             background: white;
-            padding: 10px 10px 30px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            padding: 12px 12px 35px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
             border-radius: 2px;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid rgba(0,0,0,0.03);
         }
-        
+
         .photo-card img {
             width: 100%;
-            height: 180px;
+            aspect-ratio: 1/1;
             object-fit: cover;
             border-radius: 1px;
         }
-        
+
         .photo-card p {
             font-family: 'Dancing Script';
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin: 15px 0 0;
             text-align: center;
-            color: #555;
+            color: #666;
         }
 
         /* --- BOTÓN Y CARTA --- */
@@ -259,38 +278,43 @@
             background: linear-gradient(135deg, var(--rosa-lazo) 0%, var(--rosa-lazo-oscuro) 100%);
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 18px 45px;
             border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            margin: 40px 0;
-            font-family: 'Montserrat';
+            font-size: 1.25rem;
             font-weight: 600;
+            cursor: pointer;
+            margin: 50px 0;
+            font-family: 'Montserrat';
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 6px 15px rgba(255,128,171,0.4);
+        }
+        .btn-magic:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255,128,171,0.5);
         }
 
         #love-letter {
             display: none;
-            max-width: 800px;
-            width: 85%;
+            width: 90%;
+            max-width: 750px;
             background: white;
-            padding: clamp(30px, 8vw, 70px);
+            padding: 50px;
             margin-bottom: 100px;
             border-left: 8px solid var(--rosa-lazo);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            animation: fadeInLetter 1s ease;
         }
 
-        .letter-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.8rem, 6vw, 3.2rem);
-            color: var(--texto-oro);
-            margin-bottom: 25px;
+        @keyframes fadeInLetter {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .letter-text {
-            line-height: 1.7;
-            color: #444;
+            line-height: 1.8;
             font-size: 1.1rem;
+            color: #555;
             text-align: justify;
         }
 
@@ -301,30 +325,26 @@
             color: var(--rosa-lazo-oscuro);
             margin-top: 30px;
         }
-
-        @media (max-width: 600px) {
-            .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .photo-card img { height: 140px; }
-            .flower-wrapper { bottom: 40px; }
-        }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <h1>Para la mujer de mis sueños❤️</h1>
+        <h1>Para la mujer de mis sueños💖</h1>
+       
     </header>
 
     <div class="bouquet-container">
-        <div class="flower-wrapper" style="--angle: -50deg; --h: clamp(150px, 40vh, 300px); --delay: 0s;"><div class="flower-head lirio" id="l1"></div><div class="stem"></div></div>
-        <div class="flower-wrapper" style="--angle: -30deg; --h: clamp(120px, 30vh, 240px); --delay: 0.5s;"><div class="flower-head gerbera" id="ge1"></div><div class="stem"></div></div>
-        <div class="flower-wrapper" style="--angle: -15deg; --h: clamp(180px, 45vh, 340px); --delay: 1.2s;"><div class="flower-head girasol" id="gi1"></div><div class="stem"></div></div>
-        <div class="flower-wrapper" style="--angle: 0deg; --h: clamp(140px, 35vh, 270px); --delay: 0.8s;"><div class="flower-head girasol" id="gi2"></div><div class="stem"></div></div>
-        <div class="flower-wrapper" style="--angle: 15deg; --h: clamp(180px, 45vh, 340px); --delay: 0.3s;"><div class="flower-head girasol" id="gi3"></div><div class="stem"></div></div>
-        <div class="flower-wrapper" style="--angle: 30deg; --h: clamp(120px, 30vh, 240px); --delay: 1.5s;"><div class="flower-head gerbera" id="ge2"></div><div class="stem"></div></div>
-        <div class="flower-wrapper" style="--angle: 50deg; --h: clamp(150px, 40vh, 300px); --delay: 0.7s;"><div class="flower-head lirio" id="l2"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: -45deg; --h: 220px; --delay: 0s;"><div class="flower-head lirio" id="l1"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: -25deg; --h: 180px; --delay: 0.5s;"><div class="flower-head gerbera" id="ge1"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: -10deg; --h: 260px; --delay: 1.2s;"><div class="flower-head girasol" id="gi1"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: 0deg; --h: 210px; --delay: 0.8s;"><div class="flower-head girasol" id="gi2"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: 10deg; --h: 260px; --delay: 0.3s;"><div class="flower-head girasol" id="gi3"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: 25deg; --h: 180px; --delay: 1.5s;"><div class="flower-head gerbera" id="ge2"></div><div class="stem"></div></div>
+        <div class="flower-wrapper" style="--angle: 45deg; --h: 220px; --delay: 0.7s;"><div class="flower-head lirio" id="l2"></div><div class="stem"></div></div>
         
         <div class="bow"></div>
+        
         <div class="phrase-container" id="phrase-box"></div>
     </div>
 
@@ -334,19 +354,19 @@
         <div class="photo-card" style="transform: rotate(-3deg)"><img src="WhatsApp Image 2026-03-21 at 19.59.15.jpeg" alt="1"><p>Nuestro inicio</p></div>
         <div class="photo-card" style="transform: rotate(2deg)"><img src="image copy.png" alt="2"><p>Tu sonrisa</p></div>
         <div class="photo-card" style="transform: rotate(-1deg)"><img src="image copy 2.png" alt="3"><p>3/3❤️</p></div>
-        <div class="photo-card" style="transform: rotate(4deg)"><img src="image copy 3.png" alt="4"><p>Nuestras Aventuras❤️</p></div>
+        <div class="photo-card" style="transform: rotate(4deg)"><img src="image copy 3.png" alt="4"><p>Aventuras❤️</p></div>
         <div class="photo-card" style="transform: rotate(-2deg)"><img src="image.png" alt="5"><p>Noches juntos</p></div>
         <div class="photo-card" style="transform: rotate(3deg)"><img src="image copy 5.png" alt="6"><p>Mi lugar favorito</p></div>
         <div class="photo-card" style="transform: rotate(-4deg)"><img src="image copy 4.png" alt="7"><p>Nuestra Ofi</p></div>
         <div class="photo-card" style="transform: rotate(1deg)"><img src="image copy 6.png" alt="8"><p>Por siempre</p></div>
     </div>
 
-    <button class="btn-magic" onclick="revealLetter()">Te escribi una pequeña carta💖</button>
+    <button class="btn-magic" onclick="revealLetter()">Te escribí una carta 💖</button>
 
     <div id="love-letter">
-        <h3 class="letter-title">Para mi niña hermosa, Anita</h3>
+        <h3 style="font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--texto-oro); margin: 0 0 25px;">Para mi niña hermosa, Anita</h3>
         <div class="letter-text">
-            <p>Esta vez no te pude dar rosas amarillas pero como el años pasado, te hago estas digitales con todo mi amor
+             <p>Esta vez no te pude dar rosas amarillas pero como el años pasado, te hago estas digitales con todo mi amor
                y con todo mi corazon, no quiero que en esta relación se pierdan los buenos momentos, al contrario quiero que
                se dupliquen y estar siempre junto a ti, en esta vida y en todas las posibles por siempre y para siempre, compartir caada momento,
                cada logro y también cada derrota por que estare contigo en las buenas, en las mala y en las peores por que somos y siempre seremos muy unidos
@@ -356,6 +376,7 @@
                a nuestra hermosa perrita que llego para fortalecer mas nuestro amor y claro también para fortalecer nuestra paciencia JAJAJA en fin solo queria hacerte este pequeño detalle para que recuerdes y tengas presente que te amo
                y quiero estar contigo por siempre y para siempre, Te amo mucho❤️.
             </p>
+          
         </div>
         <div class="signature">Con todo mi amor... ❤️</div>
     </div>
@@ -374,21 +395,22 @@
 
         function createFloatingCard() {
             const container = document.getElementById('phrase-box');
-            if(container.children.length > 3) return; 
+            if(container.children.length > 2) return; // Limitar cards simultáneas
 
             const card = document.createElement('div');
             card.className = 'love-card';
-            card.innerHTML = `
-                <span class="heart-icon" style="color:var(--rosa-lazo-oscuro)">❤</span>
-                <span>${phrases[Math.floor(Math.random() * phrases.length)]}</span>
-            `;
+            card.innerHTML = `<span class="heart-icon">❤</span><span>${phrases[Math.floor(Math.random() * phrases.length)]}</span>`;
+            
+            // Variación lateral aleatoria
             const offset = (Math.random() - 0.5) * 60;
             card.style.transform = `translateX(${offset}px)`;
+            
             container.appendChild(card);
             setTimeout(() => card.remove(), 6000);
         }
 
-        setInterval(createFloatingCard, 4000);
+        // Crear una card cada 3.5 segundos
+        setInterval(createFloatingCard, 3500);
 
         function buildFlower(id, count, step) {
             const head = document.getElementById(id);
@@ -403,7 +425,6 @@
             if(!head.classList.contains('lirio')) {
                 const c = document.createElement('div');
                 c.className = 'center';
-                c.style.borderRadius = '50%';
                 head.appendChild(c);
             }
         }
